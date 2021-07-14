@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gin_finans/screens/widgets/stepper_widget.dart';
 
+import 'components/custom_pointer.dart';
+
 class WelcomeScreen extends StatefulWidget {
   WelcomeScreen({Key? key}) : super(key: key);
 
@@ -14,29 +16,29 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            StepperWidget(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        elevation: 0,
+      ),
+      body: Stack(
+        children: [
+          CustomPaint(
+            painter: ShapePainter(),
+            child: Container(
+              height: 180,
+            ),
+          ),
+          Positioned(
+            bottom: 120,
+            child: StepperWidget(
               curStep: 0,
               titles: titles,
               width: MediaQuery.of(context).size.width,
               color: Colors.green,
               emptyStepper: true,
             ),
-            // ElevatedButton(
-            //   onPressed: _curStep != titles.length
-            //       ? () {
-            //           setState(() {
-            //             _curStep = _curStep + 1;
-            //           });
-            //         }
-            //       : null,
-            // child: Text("Next"),
-            // ),
-            Text("WelcomeScreen"),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
