@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gin_finans/screens/widgets/bottomsheet_widget.dart';
+import 'package:gin_finans/screens/widgets/divider_widget.dart';
 import 'package:gin_finans/screens/widgets/stepper_widget.dart';
 
 import 'steps_pages/stepfour_page.dart';
@@ -140,6 +142,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     print(_monthlyexpense.text);
                     print(_date.text);
                     print(_time.text);
+                    showWidgetFloatingBottomSheet(
+                      context: context,
+                      isDismissible: true,
+                      child: _informationPreviewData(),
+                    );
                   } else {
                     setState(() => _curStep = _curStep + 1);
                   }
@@ -151,4 +158,71 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
+
+  Container _informationPreviewData() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 40.0),
+      child: Column(
+        children: [
+          Text(
+            "Registration is complete",
+            style: TextStyle(
+              color: Colors.black87,
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          HorizontalDivider(
+            text: "Saved data",
+            icon: Icons.verified,
+            textColor: Colors.green,
+            iconColor: Colors.green,
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          _previewData(_fullname.text, Icons.person),
+          SizedBox(height: 10.0),
+          _previewData(_email.text, Icons.email),
+          SizedBox(height: 10.0),
+          _previewData(_phonenumber.text, Icons.phone),
+          SizedBox(height: 10.0),
+          _previewData(_password.text, Icons.security),
+          SizedBox(height: 10.0),
+          _previewData(_goalforactivation.text, Icons.star_border),
+          SizedBox(height: 10.0),
+          _previewData(_monthlyexpense.text, Icons.money),
+          SizedBox(height: 10.0),
+          _previewData(_monthlyincome.text, Icons.money),
+          SizedBox(height: 10.0),
+          _previewData(_date.text, Icons.calendar_today),
+          SizedBox(height: 10.0),
+          _previewData(_time.text, Icons.calendar_view_day),
+          SizedBox(height: 10.0),
+        ],
+      ),
+    );
+  }
+
+  Widget _previewData(String text, IconData icon) => Row(
+        children: [
+          Icon(
+            icon,
+            size: 15,
+          ),
+          SizedBox(
+            width: 10.0,
+          ),
+          Text(
+            text,
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.black87,
+            ),
+          ),
+        ],
+      );
 }

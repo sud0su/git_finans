@@ -34,7 +34,6 @@ class _StepTwoState extends State<StepTwo> {
     widget._password.addListener(() {
       _passwordStrength =
           estimateBruteforceStrength(widget._password.text) * 100;
-      print(_passwordStrength);
       if (_passwordStrength >= 1.0 && _passwordStrength < 10.0) {
         setStateIfMounted(() {
           _passwordMeter = "Too short";

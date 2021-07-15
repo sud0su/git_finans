@@ -4,8 +4,10 @@ class HorizontalDivider extends StatelessWidget {
   final String? text;
   final Color? textColor;
   final IconData? icon;
+  final Color? iconColor;
 
-  const HorizontalDivider({Key? key, this.text, this.icon, this.textColor})
+  const HorizontalDivider(
+      {Key? key, this.text, this.icon, this.textColor, this.iconColor})
       : super(key: key);
 
   @override
@@ -21,7 +23,7 @@ class HorizontalDivider extends StatelessWidget {
         icon != null
             ? Icon(
                 icon,
-                color: Colors.black45.withOpacity(0.5),
+                color: iconColor ?? Colors.black45.withOpacity(0.5),
                 size: 17,
               )
             : SizedBox(),
