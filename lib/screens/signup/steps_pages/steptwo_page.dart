@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gin_finans/screens/widgets/divider_widget.dart';
 import 'package:gin_finans/utils/passwordchecker.dart';
 import 'package:gin_finans/utils/validator.dart';
 
@@ -26,7 +25,7 @@ class _StepTwoState extends State<StepTwo> {
   bool _hasDigits = false;
   bool _hasLenght = false;
   double _passwordStrength = 0;
-  String _passwordMeter = '';
+  String _passwordMeter = '-';
   Color _passwordMeterColor = Colors.transparent;
 
   @override
@@ -62,7 +61,7 @@ class _StepTwoState extends State<StepTwo> {
           _passwordMeterColor = Colors.lightGreenAccent;
         });
       } else {
-        setStateIfMounted(() => _passwordMeter = "");
+        setStateIfMounted(() => _passwordMeter = "-");
       }
 
       setStateIfMounted(() {
@@ -143,29 +142,30 @@ class _StepTwoState extends State<StepTwo> {
           SizedBox(
             height: 30.0,
           ),
-          HorizontalDivider(
-            text: "Complexity",
-            textColor: Colors.white,
+          RichText(
+            text: TextSpan(
+              text: 'Complexity : ',
+              style: DefaultTextStyle.of(context).style,
+              children: <TextSpan>[
+                TextSpan(
+                  text: _passwordMeter,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: _passwordMeterColor,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 2.0,
+                        color: Colors.black26,
+                        offset: Offset(0, 0),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
           SizedBox(
             height: 5.0,
-          ),
-          Center(
-            child: Text(
-              _passwordMeter,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: _passwordMeterColor,
-                fontSize: 16.0,
-                shadows: [
-                  Shadow(
-                    blurRadius: 2.0,
-                    color: Colors.black26,
-                    offset: Offset(0, 0),
-                  ),
-                ],
-              ),
-            ),
           ),
           SizedBox(
             height: 50.0,

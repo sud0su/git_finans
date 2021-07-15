@@ -48,7 +48,7 @@ class StepperWidget extends StatelessWidget {
       if (_emptyStepper != true) {
         circleColor =
             (i == 0 || _curStep > i + 1) ? _activeColor : _inactiveColor;
-        lineColor = _curStep > i + 1 ? _activeColor : _inactiveColor;
+        lineColor = _curStep > i + 1 ? Colors.green.shade800 : _inactiveColor;
         textColor =
             (i == 0 || _curStep > i + 1) ? _inactiveColor : _activeColor;
       }

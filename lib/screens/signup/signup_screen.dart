@@ -14,7 +14,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  int _curStep = 2;
+  int _curStep = 1;
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   // firststep
@@ -24,7 +24,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
   // secondstep
   TextEditingController _password = TextEditingController();
   // thirdstep
+  TextEditingController _goalforactivation = TextEditingController();
+  TextEditingController _monthlyincome = TextEditingController();
+  TextEditingController _monthlyexpense = TextEditingController();
   // finalstep
+  TextEditingController _date = TextEditingController();
+  TextEditingController _time = TextEditingController();
 
   final List<String> titles = ["1", "2", "3", "4"];
 
@@ -32,8 +37,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     List<Widget> _registerSteps = [
       StepOne(_fullname, _email, _phonenumber, _formKey),
       StepTwo(_password, _formKey),
-      StepThree(_formKey),
-      StepFour(_formKey),
+      StepThree(_goalforactivation, _monthlyincome, _monthlyexpense, _formKey),
+      StepFour(_date, _time, _formKey),
     ];
     return _registerSteps;
   }
@@ -112,19 +117,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
             height: 45,
             child: ElevatedButton(
               child: Text(
-                "Next",
+                _curStep == 4 ? "Register" : "Next",
                 style: TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                primary: Colors.blue.shade300,
+                primary: _curStep == 4
+                    ? Colors.green.shade400
+                    : Colors.blue.shade300,
               ),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  if (_curStep == _stepsWidet().length) {
-                    print("final step.. saving data");
+                  if (_curStep == 4) {
+                    print(_fullname.text);
+                    print(_email.text);
+                    print(_phonenumber.text);
+                    print(_password.text);
+                    print(_goalforactivation.text);
+                    print(_monthlyincome.text);
+                    print(_monthlyexpense.text);
+                    print(_date.text);
+                    print(_time.text);
                   } else {
                     setState(() => _curStep = _curStep + 1);
                   }

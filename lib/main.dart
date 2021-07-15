@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gin_finans/screens/signup/signup_screen.dart';
 
+import 'config/theme.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -10,23 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        textTheme: TextTheme(
-          bodyText2: TextStyle(color: Colors.white),
-        ),
-        inputDecorationTheme: InputDecorationTheme(
-          filled: true,
-          fillColor: Colors.white,
-          border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.red),
-          ),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      theme: AppThemes.lightTheme,
       home: SignUpScreen(),
     );
   }
