@@ -29,7 +29,6 @@ class StepperWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.only(
-          top: 32.0,
           left: 24.0,
           right: 24.0,
         ),
@@ -63,7 +62,7 @@ class StepperWidget extends StatelessWidget {
             color: circleColor,
             borderRadius: new BorderRadius.all(new Radius.circular(50.0)),
             border: new Border.all(
-              color: _activeColor,
+              color: Colors.green.shade800,
               width: 2.0,
             ),
           ),
